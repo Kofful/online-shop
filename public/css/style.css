@@ -1,0 +1,174 @@
+body {
+    background-color: #e7ffee !important;
+}
+
+.company-container {
+    background: rgba(0, 0, 0, 0.8) url("../img/68.jpg");
+    background-size: cover;
+    background-blend-mode: darken;
+    padding: 50px 0 75px 0;
+    color: white;
+}
+
+.company-name {
+    font-weight: 700;
+    font-size: 38pt;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cart-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.advantages-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.advantage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.advan-text {
+    font-weight: 700;
+    font-size: 18pt;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+}
+
+.advan-img {
+    height: 100px;
+    width: 100px;
+}
+
+.products-container {
+    margin: 50px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.products-label {
+    font-weight: 700;
+    font-size: 22pt;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2f2f2f;
+    height: 300px;
+    padding: 50px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-link {
+    font-family: 'Roboto', sans-serif;
+    color: #888888;
+    transition-duration: 300ms;
+}
+
+.footer-link:hover {
+    color: #bbbbbb;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+}
+
+
+.product-container {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    transition-duration: 300ms;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 5px;
+    justify-content: space-between;
+    overflow: hidden;
+    position: absolute;
+}
+
+.product:hover {
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.product-img {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.product-link {
+    text-decoration: none;
+}
+
+.product-name {
+    margin: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+    max-height: 44px;
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 22px;
+    color: darkgreen;
+    margin:5px;
+}
+
+.hryvnia-sign {
+    font-size: 20px;
+}
+
+.short-description {
+    visibility: hidden;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.product:hover {
+    height: 400px;
+}
+
+.product:hover .short-description{
+    visibility: visible;
+}
+
+.product-capsule {
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    position: static;
+}
+
