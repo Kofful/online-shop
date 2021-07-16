@@ -216,3 +216,64 @@ body {
 .param-list {
     list-style: none;
 }
+
+.product-caption {
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 20px;
+}
+
+#product-img-carousel {
+    width: 600px;
+    height: 400px;
+    padding: 25px;
+    background-color: white;
+}
+
+.product-img-big {
+    width: 550px;
+    height: 350px;
+    object-fit: contain;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+
+.product-price-big {
+    font-size: 32px;
+    color: darkgreen;
+}
+
+.characteristics-container {
+    padding: 0 30px 30px 30px;
+    margin-left: 10px;
+    margin-bottom: 50px;
+    background-color: white;
+    width: 100%;
+}
+
+.table-row {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+}
+
+.characteristic-name {
+    font-size: 18px;
+    min-width: 150px;
+}
+
+.characteristic-value {
+    word-wrap: normal;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.btn-add-to-cart {
+    height: 50px;
+    font-size: 24px !important;
+}
