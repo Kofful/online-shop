@@ -277,3 +277,35 @@ body {
     height: 50px;
     font-size: 24px !important;
 }
+
+.login-form {
+    width: 400px;
+    height: 400px;
+    margin: 50px auto 50px auto;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-input {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.login-input::-webkit-outer-spin-button,
+.login-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.login-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.link-div {
+    display: flex;
+    flex-direction: column;
+}
