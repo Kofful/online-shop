@@ -155,15 +155,16 @@
             <?php
             ob_start();
             foreach($data as $product) {
+                extract($product);
                 ?>
             <div class="product-capsule">
                 <div class="product">
-                    <a href="/?page=product&id=<?= $product["id"]?>" class="product-link">
-                        <img class="product-img" alt="product image" src="../../public/img/<?= $product["photo"]?>">
-                        <p class="product-name"><?= $product["name"]?></p>
+                    <a href="/?page=product&id=<?= $id?>" class="product-link">
+                        <img class="product-img" alt="product image" src="../../public/img/<?= $photo?>">
+                        <p class="product-name"><?= $name?></p>
                     </a>
-                    <p class="product-price"><?= $product["price"]?><span class="hryvnia-sign">₴</span></p>
-                    <p class="short-description"><?= $product["short-description"] ?></p>
+                    <p class="product-price"><?= $price?><span class="hryvnia-sign">₴</span></p>
+                    <p class="short-description"><?= $short_description ?></p>
                 </div>
             </div>
             <?php
