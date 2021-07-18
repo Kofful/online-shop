@@ -1,10 +1,10 @@
 <footer class="footer">
     <div class="footer-links">
-        <a class="footer-link" href="./home.html">Главная</a>
-        <a class="footer-link" href="./catalog.html">Каталог</a>
-        <a class="footer-link" href="./cart.html">Корзина</a>
-        <a class="footer-link" href="./login.html">Вход</a>
-        <a class="footer-link" href="./register.html">Регистрация</a>
+        <a class="footer-link" href="/?page=home">Главная</a>
+        <a class="footer-link" href="/?page=catalog">Каталог</a>
+        <a class="footer-link" href="/?page=cart">Корзина</a>
+        <a class="footer-link" href="/?page=login">Вход</a>
+        <a class="footer-link" href="/?page=register">Регистрация</a>
     </div>
     <div>
         <a href="https://u24.ru/img/news/article_big_167321433921448.jpg"><img class="social-link" alt="instagram"
