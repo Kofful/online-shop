@@ -309,3 +309,42 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+
+
+.cart-product {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    justify-content: space-between;
+    margin: 20px 0 20px 0;
+    padding: 10px;
+    border: 1px solid #888888 !important;
+    border-radius: 10px;
+}
+
+.cart-img {
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.cart-product-price {
+    align-self: flex-end;
+    text-align: right;
+    justify-content: end;
+    margin-right: 30px;
+    font-size: 22px;
+    color: darkgreen;
+}
+
+.cart-product a {
+    height: fit-content;
+}
+
+.btn-order {
+    display: block !important;
+    font-size: 26px !important;
+    width: 200px;
+    margin: 0 auto 100px auto;
+}
