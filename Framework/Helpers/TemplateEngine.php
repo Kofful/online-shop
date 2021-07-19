@@ -17,7 +17,7 @@ class TemplateEngine
                 break;
             }
         }
-        require_once(__DIR__ . "/../resources/views/" . $layout);
+        require_once(__DIR__ . "/../App/View/Templates/" . $layout);
         ob_end_flush();
     }
 }

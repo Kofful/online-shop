@@ -1,11 +1,11 @@
 <?php
 $classes = [
-    'HomeController' => '/app/Http/Controllers/HomeController.php',
-    'CatalogController' => '/app/Http/Controllers/CatalogController.php',
-    'ProductController' => '/app/Http/Controllers/ProductController.php',
-    'CartController' => '/app/Http/Controllers/CartController.php',
-    'LoginController' => '/app/Http/Controllers/LoginController.php',
-    'RegisterController' => '/app/Http/Controllers/RegisterController.php',
-    'TemplateEngine' => '/app/TemplateEngine.php'
+    'HomeController' => '/App/Controllers/HomeController.php',
+    'CatalogController' => '/App/Controllers/CatalogController.php',
+    'ProductController' => '/App/Controllers/ProductController.php',
+    'CartController' => '/App/Controllers/CartController.php',
+    'LoginController' => '/App/Controllers/LoginController.php',
+    'RegisterController' => '/App/Controllers/RegisterController.php',
+    'TemplateEngine' => '/App/TemplateEngine.php'
 ];
 return $classes;

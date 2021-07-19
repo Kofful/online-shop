@@ -4,13 +4,13 @@
         <div id="product-img-carousel" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="product-img-big" src="../../public/img/183047178.jpg" alt="First slide">
+                    <img class="product-img-big" src="../../../public/img/183047178.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="product-img-big" src="../../public/img/183047178.jpg" alt="Second slide">
+                    <img class="product-img-big" src="../../../public/img/183047178.jpg" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="product-img-big" src="../../public/img/183047178.jpg" alt="Third slide">
+                    <img class="product-img-big" src="../../../public/img/183047178.jpg" alt="Third slide">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#product-img-carousel"
