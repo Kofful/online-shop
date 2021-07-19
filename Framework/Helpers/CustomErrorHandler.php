@@ -3,7 +3,7 @@
 
 class CustomErrorHandler
 {
-    public function handle($errno, $errstr, $errfile, $errline)
+    public static function handle($errno, $errstr, $errfile, $errline)
     {
         $errstr = htmlspecialchars($errstr);
         echo "Error: [$errno] $errstr";
