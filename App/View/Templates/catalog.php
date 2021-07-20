@@ -1,6 +1,5 @@
 <div class="body-container">
-    <form class="sidebar" method="get" action="/">
-        <input type="hidden" name="page" value="catalog" />
+    <form class="sidebar" method="get" action="/catalog">
         <input aria-label="Search" placeholder="Название" class="form-control" type="search" autocomplete="off"
                name="query">
         <label class="sidebar-label">Цена</label>
@@ -155,16 +154,15 @@
             <?php
             ob_start();
             foreach($data as $product) {
-                extract($product);
                 ?>
             <div class="product-capsule">
                 <div class="product">
-                    <a href="/?page=product&id=<?= $id?>" class="product-link">
-                        <img class="product-img" alt="product image" src="../../public/img/<?= $photo?>">
-                        <p class="product-name"><?= $name?></p>
+                    <a href="/product/<?= $product->getId()?>" class="product-link">
+                        <img class="product-img" alt="product image" src="../../public/img/<?= $product->getPhoto()?>">
+                        <p class="product-name"><?= $product->getName()?></p>
                     </a>
-                    <p class="product-price"><?= $price?><span class="hryvnia-sign">₴</span></p>
-                    <p class="short-description"><?= $short_description ?></p>
+                    <p class="product-price"><?= $product->getPrice()?><span class="hryvnia-sign">₴</span></p>
+                    <p class="short-description"><?= $product->getShortDescription() ?></p>
                 </div>
             </div>
             <?php

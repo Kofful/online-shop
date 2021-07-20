@@ -24,7 +24,7 @@
     <div class="product-container">
         <div class="product-capsule">
             <div class="product">
-                <a href="/?page=product&id=1" class="product-link">
+                <a href="/product/1" class="product-link">
                     <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
                     <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
                 </a>
@@ -35,7 +35,7 @@
         </div>
         <div class="product-capsule">
             <div class="product">
-                <a href="/?page=product&id=1" class="product-link">
+                <a href="/product/1" class="product-link">
                     <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
                     <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
                 </a>
@@ -46,7 +46,7 @@
         </div>
         <div class="product-capsule">
             <div class="product">
-                <a href="/?page=product&id=1" class="product-link">
+                <a href="/product/1" class="product-link">
                     <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
                     <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
                 </a>
@@ -57,7 +57,7 @@
         </div>
         <div class="product-capsule">
             <div class="product">
-                <a href="/?page=product&id=1" class="product-link">
+                <a href="/product/1" class="product-link">
                     <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
                     <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
                 </a>
@@ -68,5 +68,5 @@
         </div>
 
     </div>
-    <a class="btn btn-success" href="/?page=catalog">Смотреть еще</a>
+    <a class="btn btn-success" href="/catalog">Смотреть еще</a>
 </div>

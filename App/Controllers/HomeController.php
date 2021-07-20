@@ -3,7 +3,7 @@
 
 class HomeController
 {
-    public function index() {
-        include_once(__DIR__ . "/../View/Templates/home.php");
+    public static function index() {
+        TemplateEngine::render(null, null, "home.php");
     }
 }
