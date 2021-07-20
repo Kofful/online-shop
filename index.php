@@ -1,19 +1,20 @@
 <?php
-include_once(__DIR__ . "/App/Loader.php");
+include_once(__DIR__ . "/Framework/Helpers/Loader.php");
 spl_autoload_register(['Loader', 'autoload'], true, true);
-include_once(__DIR__ . "/App/CustomErrorHandler.php");
+include_once(__DIR__ . "/Framework/Helpers/CustomErrorHandler.php");
 register_shutdown_function(array("CustomErrorHandler", "handle"));
 ob_start();
 include_once(__DIR__ . "/App/View/Layouts/header.php");
 set_error_handler(array("CustomErrorHandler", "handle"));
+include_once(__DIR__ . "/Framework/Router/routes.php");
 ?>
 <body>
 <div class="container">
     <?php
     include_once(__DIR__ . "/App/View/Layouts/nav.php");
-    if (isset($_GET['page'])) {
-        TemplateEngine::render($_GET['page'], $_GET, $_GET['page'] . ".php");
-    } else {
+    try {
+        Router::run();
+    } catch(Exception $e) {
         TemplateEngine::render(null, null, "home.php");
     }
     ?>

@@ -7,7 +7,7 @@
         <input id="password-input" name="password" class="login-input form-control" type="password">
     </div>
     <div class="link-div">
-        <p>Еще нет аккаунта? <a href="/?page=register">Зарегистрируйтесь</a></p>
+        <p>Еще нет аккаунта? <a href="/register">Зарегистрируйтесь</a></p>
         <button class="btn btn-success">Войти</button>
     </div>
 </form>

@@ -6,6 +6,8 @@ $classes = [
     'CartController' => '/App/Controllers/CartController.php',
     'LoginController' => '/App/Controllers/LoginController.php',
     'RegisterController' => '/App/Controllers/RegisterController.php',
-    'TemplateEngine' => '/App/TemplateEngine.php'
+    'TemplateEngine' => '/Framework/Helpers/TemplateEngine.php',
+    'Router' => '/Framework/Router/Router.php',
+    'Product'=> '/App/Entity/Product.php'
 ];
 return $classes;
