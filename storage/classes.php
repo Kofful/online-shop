@@ -8,6 +8,9 @@ $classes = [
     'RegisterController' => '/App/Controllers/RegisterController.php',
     'TemplateEngine' => '/Framework/Helpers/TemplateEngine.php',
     'Router' => '/Framework/Router/Router.php',
-    'Product'=> '/App/Entity/Product.php'
+    'Product'=> '/App/Entity/Product.php',
+    'Session' => '/Framework/Session/Session.php',
+    'Authentication' => '/Framework/Authentication/Authentication.php',
+    'Middleware' => '/App/Service/Middleware.php',
 ];
 return $classes;

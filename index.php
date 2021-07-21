@@ -13,6 +13,9 @@ include_once(__DIR__ . "/Framework/Router/routes.php");
     <?php
     include_once(__DIR__ . "/App/View/Layouts/nav.php");
     try {
+        if(Session::cookieExists()) {
+            Session::start();
+        }
         Router::run();
     } catch(Exception $e) {
         TemplateEngine::render(null, null, "home.php");
