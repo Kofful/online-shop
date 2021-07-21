@@ -12,7 +12,11 @@
             </form>
             <div>
                 <a href="/cart" class="nav-item"><img class="cart-icon" src="/public/img/cart.png" alt="Cart"></a>
-                <a href="/login" class="btn btn-success">Вход</a>
+                <?php if(Authentication::isAuth()):?>
+                    <a href="/logout" class="btn btn-danger">Выход</a>
+                <?php else:?>
+                    <a href="/login" class="btn btn-success">Вход</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
