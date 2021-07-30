@@ -1,5 +1,7 @@
 <?php
 
+namespace Framework\Authentication;
+use Framework\Session\Session;
 
 class Authentication
 {

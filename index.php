@@ -1,7 +1,10 @@
 <?php
-include_once(__DIR__ . "/Framework/Helpers/Loader.php");
-spl_autoload_register(['Loader', 'autoload'], true, true);
-include_once(__DIR__ . "/Framework/Helpers/CustomErrorHandler.php");
+use Framework\Router\Router;
+use Framework\Session\Session;
+use Framework\Helpers\TemplateEngine;
+
+require_once(__DIR__ . "/vendor/autoload.php");
+include_once(__DIR__ . "/Framework/Helpers/logger.php");
 register_shutdown_function(array("CustomErrorHandler", "handle"));
 ob_start();
 include_once(__DIR__ . "/App/View/Layouts/header.php");

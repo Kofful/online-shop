@@ -1,4 +1,6 @@
 <?php
+use Framework\Router\Router;
+
 Router::get("/", "HomeController");
 Router::get("/catalog", "CatalogController");
 Router::get("/cart", "CartController");
