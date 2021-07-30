@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controllers;
+
+use Framework\Helpers\TemplateEngine;
+use Framework\Router\Router;
+use Framework\Authentication\Authentication;
 
 class RegisterController
 {

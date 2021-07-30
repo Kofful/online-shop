@@ -1,5 +1,9 @@
 <?php
 
+namespace Framework\Router;
+
+use Framework\Helpers\TemplateEngine;
+use App\Controllers\HomeController;
 
 class Router
 {
@@ -50,7 +54,7 @@ class Router
 
     private static function callMiddleware($middleware) {
         try {
-            return call_user_func(["Middleware", $middleware]);
+            return call_user_func(["App\\Service\\Middleware", $middleware]);
         } catch(Exception $ex) {
             return false;
         }
@@ -60,9 +64,9 @@ class Router
         extract($route);
         if(preg_match($url, $request)) {
             if(!isset($middleware) || self::callMiddleware($middleware)) {
-                call_user_func([$class, $method], $_POST);
+                call_user_func(["App\\Controllers\\" . $class, $method], $_POST);
             } else {
-                call_user_func(["HomeController", "index"]);
+                call_user_func(["App\\Controllers\\HomeController", "index"]);
             }
             return true;
         }

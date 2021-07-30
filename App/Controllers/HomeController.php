@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Controllers;
+
+use Framework\Helpers\TemplateEngine;
 
 class HomeController
 {

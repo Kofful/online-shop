@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Service;
+
+use Framework\Authentication\Authentication;
 
 class Middleware
 {

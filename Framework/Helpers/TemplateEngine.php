@@ -1,5 +1,6 @@
 <?php
 
+namespace Framework\Helpers;
 
 class TemplateEngine
 {

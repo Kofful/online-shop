@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Entity\Product;
+use Framework\Helpers\TemplateEngine;
 
 class CartController
 {
