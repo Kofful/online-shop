@@ -49,9 +49,6 @@ class Session
     }
 
     public static function cookieExists() {
-        if(!self::sessionExists()) {
-            throw new SessionException("Session is not started yet");
-        }
         return !empty($_COOKIE);
     }
 

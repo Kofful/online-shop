@@ -19,8 +19,17 @@ include_once(__DIR__ . "/Framework/Router/routes.php");
         if(Session::cookieExists()) {
             Session::start();
         }
-        Router::run();
+        $routeParams = Router::run();
+        extract($routeParams);
+        //if middleware doesn't exist, or it exists and lets us continue
+        if(!isset($middleware) || call_user_func(["App\\Service\\Middleware", $middleware])) {
+            call_user_func(["App\\Controllers\\" . $class, $method], $_POST);
+        } else {
+            call_user_func(["App\\Controllers\\HomeController", "index"]);
+        }
     } catch(Exception $e) {
+        echo $e->getMessage();
+        error_log($e->getMessage());
         TemplateEngine::render(null, null, "home.php");
     }
     ?>
