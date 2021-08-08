@@ -8,7 +8,7 @@ class Authentication
 
     public static function isAuth()
     {
-        return Session::cookieExists();
+        return Session::sessionExists();
     }
 
     public static function auth($login, $password) {
