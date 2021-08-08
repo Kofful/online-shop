@@ -7,63 +7,67 @@ use App\Controllers\HomeController;
 
 class Router
 {
-    private static $arr_get = [];
-    private static $arr_post = [];
+    private static array $routesGet = [];
+    private static array $routesPost = [];
 
-    private static function addRoute($url, $controller, $middleware, &$array) {
+    private static function addRoute($url, $controller, $middleware, &$array)
+    {
         $controller = explode("@", $controller);
         $class = $controller[0];
         $method = "index";
-        if(isset($controller[1])) {
+        if (isset($controller[1])) {
             $method = $controller[1];
         }
         $url = "/^" . str_replace("/", "\/", $url) . "$/";
         array_push($array, compact("class", "method", "url", "middleware"));
-
     }
 
-    public static function get($url, $controller, $middleware = null) {
-        self::addRoute($url, $controller, $middleware, self::$arr_get);
+    public static function get($url, $controller, $middleware = null)
+    {
+        self::addRoute($url, $controller, $middleware, self::$routesGet);
     }
 
-    public static function post($url, $controller, $middleware = null) {
-        self::addRoute($url, $controller, $middleware, self::$arr_post);
+    public static function post($url, $controller, $middleware = null)
+    {
+        self::addRoute($url, $controller, $middleware, self::$routesPost);
     }
 
     public static function run()
     {
         $request = explode("?", $_SERVER["REQUEST_URI"])[0];
-        switch($_SERVER["REQUEST_METHOD"]) {
-            case "GET": {
-                foreach (self::$arr_get as $route) {
-                    if(self::acceptRoute($route, $request))
+        switch ($_SERVER["REQUEST_METHOD"]) {
+            case "GET":
+                foreach (self::$routesGet as $route) {
+                    if (self::acceptRoute($route, $request)) {
                         return;
+                    }
                 }
                 break;
-            }
-            case "POST": {
-                foreach (self::$arr_post as $route) {
-                    if(self::acceptRoute($route, $request))
+            case "POST":
+                foreach (self::$routesPost as $route) {
+                    if (self::acceptRoute($route, $request)) {
                         return;
+                    }
                 }
                 break;
-            }
         }
         throw new Exception("Route not found");
     }
 
-    private static function callMiddleware($middleware) {
+    private static function callMiddleware($middleware)
+    {
         try {
             return call_user_func(["App\\Service\\Middleware", $middleware]);
-        } catch(Exception $ex) {
+        } catch (Exception $ex) {
             return false;
         }
     }
 
-    private static function acceptRoute($route, $request) {
+    private static function acceptRoute($route, $request): bool
+    {
         extract($route);
-        if(preg_match($url, $request)) {
-            if(!isset($middleware) || self::callMiddleware($middleware)) {
+        if (preg_match($url, $request)) {
+            if (!isset($middleware) || self::callMiddleware($middleware)) {
                 call_user_func(["App\\Controllers\\" . $class, $method], $_POST);
             } else {
                 call_user_func(["App\\Controllers\\HomeController", "index"]);
@@ -73,8 +77,8 @@ class Router
         return false;
     }
 
-    public static function redirect($url) {
+    public static function redirect($url)
+    {
         TemplateEngine::render("redirect", compact("url"), "redirect.php");
     }
-
 }

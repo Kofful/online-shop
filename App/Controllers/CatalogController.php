@@ -7,7 +7,8 @@ use Framework\Helpers\TemplateEngine;
 
 class CatalogController
 {
-    public static function index() {
+    public static function index()
+    {
         try {
             $data = Product::getProducts();
             TemplateEngine::render("catalog", $data, "catalog.php");

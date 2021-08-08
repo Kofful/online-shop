@@ -8,12 +8,14 @@ use Framework\Authentication\Authentication;
 
 class RegisterController
 {
-    public static function index() {
+    public static function index()
+    {
         TemplateEngine::render("register", null, "register.php");
     }
 
 
-    public static function register($data) {
+    public static function register($data)
+    {
         if (!isset($data["phone"]) || $data["phone"] == "" || !isset($data["password"]) || $data["password"] == "") {
             Router::redirect("/register");
         }
