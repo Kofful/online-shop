@@ -14,14 +14,14 @@ class LoginController
 
     public static function login($data) {
         if(Authentication::auth($data["phone"], $data["password"])) {
-            Router::redirect("/");
+            TemplateEngine::redirect("/");
         }
-        Router::redirect("/login");
+        TemplateEngine::redirect("/login");
     }
 
     public static function logout() {
         Authentication::logOut();
-        Router::redirect("/");
+        TemplateEngine::redirect("/");
     }
 
 }

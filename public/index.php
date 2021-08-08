@@ -25,7 +25,7 @@ include_once(__DIR__ . "/../Framework/Router/routes.php");
         if(!isset($middleware) || call_user_func(["App\\Service\\Middleware", $middleware["name"]], $middleware["params"])) {
             call_user_func(["App\\Controllers\\" . $class, $method], $_POST);
         } else {
-            call_user_func(["App\\Controllers\\HomeController", "index"]);
+            TemplateEngine::redirect("/");
         }
     } catch(Exception $e) {
         echo $e->getMessage();

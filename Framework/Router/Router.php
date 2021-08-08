@@ -61,9 +61,4 @@ class Router
         }
         return $routeList;
     }
-
-    public static function redirect($url) {
-        TemplateEngine::render("redirect", compact("url"), "redirect.php");
-    }
-
 }

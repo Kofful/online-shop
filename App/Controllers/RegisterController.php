@@ -15,12 +15,12 @@ class RegisterController
 
     public static function register($data) {
         if (!isset($data["phone"]) || $data["phone"] == "" || !isset($data["password"]) || $data["password"] == "") {
-            Router::redirect("/register");
+            TemplateEngine::redirect("/register");
         }
         //Store to db when it's possible. Now just logging in using data from file
         if (Authentication::auth($data["phone"], $data["password"])) {
-            Router::redirect("/");
+            TemplateEngine::redirect("/");
         }
-        Router::redirect("/register");
+        TemplateEngine::redirect("/register");
     }
 }
