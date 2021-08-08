@@ -8,7 +8,7 @@ class Product
     private $name;
     private $price;
     private $photo;
-    private $short_description;
+    private $shortDescription;
 
     public static function getProducts() {
         $result = require(__DIR__ . "/../../storage/products.php");
@@ -19,7 +19,7 @@ class Product
             $product->setName($item["name"]);
             $product->setPhoto($item["photo"]);
             $product->setPrice($item["price"]);
-            $product->setShortDescription($item["short_description"]);
+            $product->setShortDescription($item["shortDescription"]);
             array_push($products, $product);
         }
         return $products;
@@ -71,12 +71,12 @@ class Product
 
     public function getShortDescription()
     {
-        return $this->short_description;
+        return $this->shortDescription;
     }
 
-    public function setShortDescription($short_description): void
+    public function setShortDescription($shortDescription): void
     {
-        $this->short_description = $short_description;
+        $this->shortDescription = $shortDescription;
     }
 
     public function getPhoto()
