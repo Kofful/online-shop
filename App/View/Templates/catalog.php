@@ -153,7 +153,7 @@
         <div class="product-container">
             <?php
             ob_start();
-            foreach($data as $product) {
+            foreach ($data as $product) {
                 ?>
             <div class="product-capsule">
                 <div class="product">
@@ -165,7 +165,7 @@
                     <p class="short-description"><?= $product->getShortDescription() ?></p>
                 </div>
             </div>
-            <?php
+                <?php
             }
             ob_end_flush()?>
         </div>

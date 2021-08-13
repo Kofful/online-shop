@@ -1,22 +1,27 @@
 <?php
 
 namespace Framework\Authentication;
+
 use Framework\Session\Session;
+use Helpers\Exceptions\SessionException;
 
 class Authentication
 {
-
-    public static function isAuth()
+    public static function isAuth(): bool
     {
         return Session::cookieExists();
     }
 
-    public static function auth($login, $password) {
+    /**
+     * @throws SessionException
+     */
+    public static function auth($login, $password): bool
+    {
         $users = include(__DIR__ . "/../../storage/users.php");
         $response = false;
-        foreach($users as $user) {
-            if($user["login"] == $login) {
-                if($user["password"] == $password) {
+        foreach ($users as $user) {
+            if ($user["login"] == $login) {
+                if ($user["password"] == $password) {
                     Session::start();
                     Session::set("login", $login);
                     $response = true;
@@ -29,11 +34,16 @@ class Authentication
         return $response;
     }
 
-    public static function getLogin() {
+    public static function getLogin()
+    {
         return Session::get("login");
     }
 
-    public static function logOut() {
+    /**
+     * @throws SessionException
+     */
+    public static function logOut()
+    {
         setcookie(Session::getName(), "", time() - 3600);
         Session::destroy();
     }

@@ -8,13 +8,15 @@ use Framework\Authentication\Authentication;
 
 class RegisterController
 {
-    public static function index() {
+    public static function index()
+    {
         TemplateEngine::render("register", null, "register.php");
     }
 
-
-    public static function register($data) {
-        if (!isset($data["phone"]) || $data["phone"] == "" || !isset($data["password"]) || $data["password"] == "") {
+    public static function register($data)
+    {
+        if (!isset($data["phone"]) || $data["phone"] == "" ||
+            !isset($data["password"]) || $data["password"] == "") {
             TemplateEngine::redirect("/register");
         }
         //Store to db when it's possible. Now just logging in using data from file

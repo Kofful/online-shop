@@ -6,9 +6,10 @@ use Framework\Authentication\Authentication;
 
 class Middleware
 {
-    public static function auth($params = []) {
+    public static function auth($params = []) :bool
+    {
         $response = Authentication::isAuth();
-        if(isset($params["statement"]) && !$params["statement"]) {
+        if (isset($params["statement"]) && !$params["statement"]) {
             //if user has to be unauthorized, we reverse response
             $response = !$response;
         }

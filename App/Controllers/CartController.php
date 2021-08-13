@@ -7,7 +7,8 @@ use Framework\Helpers\TemplateEngine;
 
 class CartController
 {
-    public static function index() {
+    public static function index()
+    {
         $data = Product::getCartProducts();
         TemplateEngine::render("cart", $data, "cart.php");
     }

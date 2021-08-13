@@ -4,13 +4,14 @@ namespace App\Entity;
 
 class Product
 {
-    private $id;
-    private $name;
-    private $price;
-    private $photo;
-    private $short_description;
+    private int $id;
+    private string $name;
+    private float $price;
+    private string $photo;
+    private string $shortDescription;
 
-    public static function getProducts() {
+    public static function getProducts(): array
+    {
         $result = require(__DIR__ . "/../../storage/products.php");
         $products = [];
         foreach ($result as $item) {
@@ -19,13 +20,14 @@ class Product
             $product->setName($item["name"]);
             $product->setPhoto($item["photo"]);
             $product->setPrice($item["price"]);
-            $product->setShortDescription($item["short_description"]);
+            $product->setShortDescription($item["shortDescription"]);
             array_push($products, $product);
         }
         return $products;
     }
 
-    public static function getCartProducts() {
+    public static function getCartProducts(): array
+    {
         $result = require(__DIR__ . "/../../storage/cart-products.php");
         $products = [];
         foreach ($result as $item) {
@@ -39,7 +41,7 @@ class Product
         return $products;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -49,7 +51,7 @@ class Product
         $this->id = $id;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -59,7 +61,7 @@ class Product
         $this->name = $name;
     }
 
-    public function getPrice()
+    public function getPrice(): float
     {
         return $this->price;
     }
@@ -69,17 +71,17 @@ class Product
         $this->price = $price;
     }
 
-    public function getShortDescription()
+    public function getShortDescription(): string
     {
-        return $this->short_description;
+        return $this->shortDescription;
     }
 
-    public function setShortDescription($short_description): void
+    public function setShortDescription($shortDescription): void
     {
-        $this->short_description = $short_description;
+        $this->shortDescription = $shortDescription;
     }
 
-    public function getPhoto()
+    public function getPhoto(): string
     {
         return $this->photo;
     }
