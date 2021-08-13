@@ -4,11 +4,12 @@ namespace Framework\Router;
 
 use Framework\Helpers\TemplateEngine;
 use App\Controllers\HomeController;
+use Helpers\Exceptions\RouterException;
 
 class Router
 {
-    private static $arr_get = [];
-    private static $arr_post = [];
+    private static $routesGet = [];
+    private static $routesPost = [];
 
     private static function addRoute($url, $controller, $middleware, &$array) {
         $controller = explode("@", $controller);
@@ -23,58 +24,41 @@ class Router
     }
 
     public static function get($url, $controller, $middleware = null) {
-        self::addRoute($url, $controller, $middleware, self::$arr_get);
+        self::addRoute($url, $controller, $middleware, self::$routesGet);
     }
 
     public static function post($url, $controller, $middleware = null) {
-        self::addRoute($url, $controller, $middleware, self::$arr_post);
+        self::addRoute($url, $controller, $middleware, self::$routesPost);
     }
 
     public static function run()
     {
         $request = explode("?", $_SERVER["REQUEST_URI"])[0];
+        $routeList = self::getRouteList();
+        $routeParams = null;
+        foreach ($routeList as $route) {
+            if (preg_match($route['url'], $request)) {//if request url matches route url
+                $routeParams = $route;
+                break;
+            }
+        }
+        if(!isset($routeParams))
+            throw new RouterException("Route not found: {$request}");
+        return $routeParams;
+    }
+
+    private static function getRouteList() {
+        $routeList = [];
         switch($_SERVER["REQUEST_METHOD"]) {
             case "GET": {
-                foreach (self::$arr_get as $route) {
-                    if(self::acceptRoute($route, $request))
-                        return;
-                }
+                $routeList = self::$routesGet;
                 break;
             }
             case "POST": {
-                foreach (self::$arr_post as $route) {
-                    if(self::acceptRoute($route, $request))
-                        return;
-                }
+                $routeList = self::$routesPost;
                 break;
             }
         }
-        throw new Exception("Route not found");
+        return $routeList;
     }
-
-    private static function callMiddleware($middleware) {
-        try {
-            return call_user_func(["App\\Service\\Middleware", $middleware]);
-        } catch(Exception $ex) {
-            return false;
-        }
-    }
-
-    private static function acceptRoute($route, $request) {
-        extract($route);
-        if(preg_match($url, $request)) {
-            if(!isset($middleware) || self::callMiddleware($middleware)) {
-                call_user_func(["App\\Controllers\\" . $class, $method], $_POST);
-            } else {
-                call_user_func(["App\\Controllers\\HomeController", "index"]);
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public static function redirect($url) {
-        TemplateEngine::render("redirect", compact("url"), "redirect.php");
-    }
-
 }

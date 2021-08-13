@@ -13,17 +13,20 @@ class Authentication
 
     public static function auth($login, $password) {
         $users = include(__DIR__ . "/../../storage/users.php");
+        $response = false;
         foreach($users as $user) {
             if($user["login"] == $login) {
                 if($user["password"] == $password) {
                     Session::start();
                     Session::set("login", $login);
-                    return true;
+                    $response = true;
+                    break;
                 }
-                return false;
+                //response is already false, so just go out from foreach
+                break;
             }
         }
-        return false;
+        return $response;
     }
 
     public static function getLogin() {
