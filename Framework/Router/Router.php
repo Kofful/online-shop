@@ -50,8 +50,9 @@ class Router
                     }
                 }
                 break;
+            default:
+                throw new Exception("Route not found");
         }
-        throw new Exception("Route not found");
     }
 
     private static function callMiddleware($middleware)

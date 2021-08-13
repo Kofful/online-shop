@@ -10,6 +10,7 @@ class CustomErrorHandler
         echo "Error: [$errno] $errstr <br/>";
         echo "File: $errfile<br/>";
         echo "Line: $errline<br/><br/>";
+
         return true;
     }
 }

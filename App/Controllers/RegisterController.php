@@ -13,10 +13,10 @@ class RegisterController
         TemplateEngine::render("register", null, "register.php");
     }
 
-
     public static function register($data)
     {
-        if (!isset($data["phone"]) || $data["phone"] == "" || !isset($data["password"]) || $data["password"] == "") {
+        if (!isset($data["phone"]) || $data["phone"] == "" ||
+            !isset($data["password"]) || $data["password"] == "") {
             Router::redirect("/register");
         }
         //Store to db when it's possible. Now just logging in using data from file

@@ -7,7 +7,6 @@ use Helpers\Exceptions\SessionException;
 
 class Authentication
 {
-
     /**
      * @throws SessionException
      */
