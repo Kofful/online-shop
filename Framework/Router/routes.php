@@ -11,3 +11,5 @@ Router::get("/logout", "LoginController@logout", ["name"=>"auth","params"=>["sta
 
 Router::post("/login", "LoginController@login", ["name"=>"auth","params"=>["statement"=>false]]);
 Router::post("/register", "RegisterController@register", ["name"=>"auth","params"=>["statement"=>false]]);
+
+Router::get("/products", "ProductController@getProducts");

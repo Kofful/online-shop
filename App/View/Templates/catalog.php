@@ -150,25 +150,7 @@
     </form>
     <div class="products-container">
         <p class="products-label">Каталог товаров</p>
-        <div class="product-container">
-            <?php
-            ob_start();
-            foreach ($data as $product) {
-                ?>
-            <div class="product-capsule">
-                <div class="product">
-                    <a href="/product/<?= $product->getId()?>" class="product-link">
-                        <img class="product-img" alt="product image" src="../../public/img/<?= $product->getPhoto()?>">
-                        <p class="product-name"><?= $product->getName()?></p>
-                    </a>
-                    <p class="product-price"><?= $product->getPrice()?><span class="hryvnia-sign">₴</span></p>
-                    <p class="short-description"><?= $product->getShortDescription() ?></p>
-                </div>
-            </div>
-                <?php
-            }
-            ob_end_flush()?>
-        </div>
+        <div id="loader" class="lds-ring"><div></div><div></div><div></div><div></div></div>
         <div class="load-more-container">
             <button class="btn btn-success btn-load-more">Смотреть еще</button>
         </div>
