@@ -1,3 +1,5 @@
+</div>
+</body>
 <footer class="footer">
     <div class="footer-links">
         <a class="footer-link" href="/">Главная</a>

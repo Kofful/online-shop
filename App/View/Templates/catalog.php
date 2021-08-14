@@ -172,5 +172,6 @@
         <div class="load-more-container">
             <button class="btn btn-success btn-load-more">Смотреть еще</button>
         </div>
+        <script src="/public/js/catalog.js"></script>
     </div>
 </div>
