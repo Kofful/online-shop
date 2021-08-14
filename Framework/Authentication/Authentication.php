@@ -2,6 +2,7 @@
 
 namespace Framework\Authentication;
 
+use App\Entity\User;
 use Framework\Session\Session;
 use Helpers\Exceptions\SessionException;
 
@@ -17,19 +18,13 @@ class Authentication
      */
     public static function auth($login, $password): bool
     {
-        $users = include(__DIR__ . "/../../storage/users.php");
         $response = false;
-        foreach ($users as $user) {
-            if ($user["login"] == $login) {
-                if ($user["password"] == $password) {
-                    Session::start();
-                    Session::set("login", $login);
-                    $response = true;
-                    break;
-                }
-                //response is already false, so just go out from foreach
-                break;
-            }
+        if (User::all()
+            ->where("phone", "=", $login)
+            ->where("password", "=", $password)->first()) {
+            Session::start();
+            Session::set("login", $login);
+            $response = true;
         }
         return $response;
     }

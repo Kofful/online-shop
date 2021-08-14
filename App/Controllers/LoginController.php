@@ -15,7 +15,8 @@ class LoginController
 
     public static function login($data)
     {
-        if (Authentication::auth($data["phone"], $data["password"])) {
+        $password = hash("sha256", $data["password"]);
+        if (Authentication::auth($data["phone"], $password)) {
             TemplateEngine::redirect("/");
         }
         TemplateEngine::redirect("/login");
