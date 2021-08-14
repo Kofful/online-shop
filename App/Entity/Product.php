@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class Product
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
 {
     private int $id;
     private string $name;
@@ -12,7 +14,7 @@ class Product
 
     public static function getProducts(): array
     {
-        $result = require(__DIR__ . "/../../storage/products.php");
+        $result = Product::all();
         $products = [];
         foreach ($result as $item) {
             $product = new Product();
@@ -20,7 +22,7 @@ class Product
             $product->setName($item["name"]);
             $product->setPhoto($item["photo"]);
             $product->setPrice($item["price"]);
-            $product->setShortDescription($item["shortDescription"]);
+            $product->setShortDescription($item["short_description"]);
             array_push($products, $product);
         }
         return $products;
