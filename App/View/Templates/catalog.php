@@ -1,5 +1,13 @@
 <div class="body-container">
     <form class="sidebar" method="get" action="/catalog">
+        <div class="sidebar-group">
+            <label class="me-3" for="sorting">Сортировка</label>
+            <select id="sorting" class="form-select" name="sort">
+                <option value="standard">Стандартная</option>
+                <option value="price-asc">Мин. цена</option>
+                <option value="price-desc">Макс. цена</option>
+            </select>
+        </div>
         <input aria-label="Search" placeholder="Название" class="form-control" type="search" autocomplete="off"
                name="query">
         <label class="sidebar-label">Цена</label>

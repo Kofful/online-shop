@@ -75,7 +75,15 @@ class Product extends Model
         if (isset($params["max-price"]) && strlen($params["max-price"]) > 0) {
             $result = $result->where("price", "<=", $params["max-price"]);
         }
-
+        if (isset($params["sort"])) {
+            switch ($params["sort"]) {
+                case "price-asc":
+                    $result = $result->orderBy("price", "ASC");
+                    break;
+                case "price-desc":
+                    $result = $result->orderBy("price", "DESC");
+            }
+        }
         return self::arraysToObjects($result->get());
     }
 

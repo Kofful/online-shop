@@ -189,6 +189,8 @@ body {
     display:flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .sidebar-span {
@@ -197,6 +199,7 @@ body {
 
 .sidebar-label {
     margin-top: 10px;
+    margin-right: 10px;
 }
 
 .sidebar-btn {
