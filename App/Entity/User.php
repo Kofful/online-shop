@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use \Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Model
 {
@@ -42,5 +43,10 @@ class User extends Model
     public function setPhone(string $phone): void
     {
         $this->phone = $phone;
+    }
+
+    public function listing(): HasMany
+    {
+        return $this->hasMany(UserProduct::class);
     }
 }

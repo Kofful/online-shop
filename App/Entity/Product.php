@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -23,21 +24,6 @@ class Product extends Model
             $product->setPhoto($item["photo"]);
             $product->setPrice($item["price"]);
             $product->setShortDescription($item["short_description"]);
-            array_push($products, $product);
-        }
-        return $products;
-    }
-
-    public static function getCartProducts(): array
-    {
-        $result = require(__DIR__ . "/../../storage/cart-products.php");
-        $products = [];
-        foreach ($result as $item) {
-            $product = new Product();
-            $product->setId($item["id"]);
-            $product->setName($item["name"]);
-            $product->setPhoto($item["photo"]);
-            $product->setPrice($item["price"]);
             array_push($products, $product);
         }
         return $products;
@@ -91,5 +77,10 @@ class Product extends Model
     public function setPhoto($photo): void
     {
         $this->photo = $photo;
+    }
+
+    public function listing(): HasMany
+    {
+        return $this->hasMany(UserProduct::class);
     }
 }
