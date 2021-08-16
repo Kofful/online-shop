@@ -19,11 +19,12 @@ class Authentication
     public static function auth($login, $password): bool
     {
         $response = false;
-        if (User::all()
+        if ($user = User::all()
             ->where("phone", "=", $login)
             ->where("password", "=", $password)->first()) {
             Session::start();
             Session::set("login", $login);
+            Session::set("id", $user["id"]);
             $response = true;
         }
         return $response;
@@ -32,6 +33,11 @@ class Authentication
     public static function getLogin()
     {
         return Session::get("login");
+    }
+
+    public static function getId()
+    {
+        return Session::get("id");
     }
 
     /**
