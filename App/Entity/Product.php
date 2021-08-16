@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Pagination\Paginator;
 
 class Product extends Model
 {
@@ -28,7 +29,7 @@ class Product extends Model
         return $products;
     }
 
-    public static function getProducts($params): array
+    public static function getProducts($params): \Illuminate\Contracts\Pagination\Paginator
     {
         $result = Product::query();
         //print_r($result);
@@ -84,7 +85,9 @@ class Product extends Model
                     $result = $result->orderBy("price", "DESC");
             }
         }
-        return self::arraysToObjects($result->get());
+        ob_end_flush();
+        //one element on page was chosen only for testing pages
+        return $result->simplePaginate(1, ["*"], "page", $params["page"] ?? 1);
     }
 
     public static function getMainProducts(): array

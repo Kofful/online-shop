@@ -200,20 +200,41 @@
                 ?>
             <div class="product-capsule">
                 <div class="product">
-                    <a href="/product/<?= $product->getId()?>" class="product-link">
-                        <img class="product-img" alt="product image" src="../../public/img/<?= $product->getPhoto()?>">
-                        <p class="product-name"><?= $product->getName()?></p>
+                    <a href="/product/<?= $product["id"]?>" class="product-link">
+                        <img class="product-img" alt="product image" src="../../public/img/<?= $product["photo"]?>">
+                        <p class="product-name"><?= $product["name"]?></p>
                     </a>
-                    <p class="product-price"><?= $product->getPrice()?><span class="hryvnia-sign">₴</span></p>
-                    <p class="short-description"><?= $product->getShortDescription() ?></p>
+                    <p class="product-price"><?= $product["price"]?><span class="hryvnia-sign">₴</span></p>
+                    <p class="short-description"><?= $product["short_description"] ?></p>
                 </div>
             </div>
                 <?php
             }
             ob_end_flush()?>
         </div>
+        <?php
+        $link = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+        unset($_GET["page"]);
+        $query = http_build_query($_GET);
+        $link .= "?{$query}";
+        if (strlen($query)) {
+            $link .= "&";
+        }
+        $prev = $data["products"]->currentPage() - 1;
+        $next = $prev + 2;
+        ?>
         <div class="load-more-container">
-            <button class="btn btn-success btn-load-more">Смотреть еще</button>
+            <?php
+            if ($data["products"]->currentPage() > 1) :
+                ?>
+            <a href="<?= "{$link}page={$prev}" ?>" class="btn btn-success btn-load-more">Назад</a>
+            <?php endif;?>
+
+            <?php
+            if ($data["products"]->hasMorePages()) :
+                ?>
+                <a href="<?= "{$link}page={$next}"?>" class="btn btn-success btn-load-more">Вперед</a>
+            <?php endif;?>
         </div>
     </div>
 </div>
