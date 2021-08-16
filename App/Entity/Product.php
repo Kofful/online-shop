@@ -13,11 +13,10 @@ class Product extends Model
     private string $photo;
     private string $shortDescription;
 
-    public static function getProducts(): array
+    public static function arraysToObjects($array): array
     {
-        $result = Product::all();
         $products = [];
-        foreach ($result as $item) {
+        foreach ($array as $item) {
             $product = new Product();
             $product->setId($item["id"]);
             $product->setName($item["name"]);
@@ -27,6 +26,18 @@ class Product extends Model
             array_push($products, $product);
         }
         return $products;
+    }
+
+    public static function getProducts(): array
+    {
+        $result = Product::all();
+        return self::arraysToObjects($result);
+    }
+
+    public static function getMainProducts(): array
+    {
+        $result = Product::inRandomOrder()->limit(4)->get();
+        return self::arraysToObjects($result);
     }
 
     public function getId(): int
