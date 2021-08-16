@@ -28,10 +28,55 @@ class Product extends Model
         return $products;
     }
 
-    public static function getProducts(): array
+    public static function getProducts($params): array
     {
-        $result = Product::all();
-        return self::arraysToObjects($result);
+        $result = Product::query();
+        //print_r($result);
+        if (isset($params["query"]) && strlen($params["query"]) > 0) {
+            $result = $result->where("name", "like", "%{$params["query"]}%");
+        }
+        if (isset($params["brand"])) {
+            $result = $result->whereIn("brand", $params["brand"]);
+        }
+        if (isset($params["processor"])) {
+            $result = $result->where("processor", "like", "%{$params["processor"][0]}%");
+            for ($i = 1; $i < sizeof($params["processor"]); $i++) {
+                $result = $result->orWhere("processor", "like", "%{$params["processor"][$i]}%");
+            }
+        }
+        if (isset($params["ram"])) {
+            $result = $result->whereIn("ram", $params["ram"]);
+        }
+        if (isset($params["video-card"])) {
+            $result = $result->whereIn("videocard", $params["video-card"]);
+        }
+        if (isset($params["disk-type"])) {
+            switch ($params["disk-type"]) {
+                case "HDD":
+                    $result = $result->where("ssd_size", "=", 0);
+                    break;
+                case "SSD":
+                    $result = $result->where("hdd_size", "=", 0);
+                    break;
+                default:
+                    $result = $result->where("hdd_size", ">", 0)
+                        ->where("ssd_size", ">", 0);
+            }
+        }
+        if (isset($params["ssd-mem"])) {
+            $result = $result->whereIn("ssd_size", $params["ssd-mem"]);
+        }
+        if (isset($params["hdd-mem"])) {
+            $result = $result->whereIn("hdd_size", $params["hdd-mem"]);
+        }
+        if (isset($params["min-price"]) && strlen($params["min-price"]) > 0) {
+            $result = $result->where("price", ">=", $params["min-price"]);
+        }
+        if (isset($params["max-price"]) && strlen($params["max-price"]) > 0) {
+            $result = $result->where("price", "<=", $params["max-price"]);
+        }
+
+        return self::arraysToObjects($result->get());
     }
 
     public static function getMainProducts(): array

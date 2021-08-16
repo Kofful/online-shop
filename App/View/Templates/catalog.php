@@ -75,13 +75,13 @@
                     </li>
                     <li>
                         <input name="video-card[]" type="checkbox" aria-label="Video card" class="form-check-input"
-                               value="GeForce GTX 1050 Ti">
-                        GeForce GTX 1050 Ti
+                               value="GeForce GTX 1060">
+                        GeForce GTX 1060
                     </li>
                     <li>
                         <input name="video-card[]" type="checkbox" aria-label="Video card" class="form-check-input"
-                               value="GeForce GTX 1050 Ti">
-                        GeForce GTX 1050 Ti
+                               value="Radeon RX 580">
+                        Radeon RX 580
                     </li>
                 </ul>
             </li>
@@ -95,13 +95,13 @@
                     </li>
                     <li>
                         <input name="disk-type" type="radio" aria-label="Disk type" class="form-check-input"
-                               value="HDD">
-                        HDD
+                               value="SSD">
+                        SSD
                     </li>
                     <li>
                         <input name="disk-type" type="radio" aria-label="Disk type" class="form-check-input"
-                               value="HDD">
-                        HDD
+                               value="HDD-SSD">
+                        HDD + SSD
                     </li>
                 </ul>
             </li>
@@ -111,17 +111,17 @@
                     <li>
                         <input name="ssd-mem[]" type="checkbox" aria-label="SSD memory" class="form-check-input"
                                value="240">
-                        240
+                        240 ГБ
                     </li>
                     <li>
                         <input name="ssd-mem[]" type="checkbox" aria-label="SSD memory" class="form-check-input"
-                               value="240">
-                        240
+                               value="512">
+                        512 ГБ
                     </li>
                     <li>
                         <input name="ssd-mem[]" type="checkbox" aria-label="SSD memory" class="form-check-input"
-                               value="240">
-                        240
+                               value="1024">
+                        1 ТБ
                     </li>
                 </ul>
             </li>
@@ -131,17 +131,17 @@
                     <li>
                         <input name="hdd-mem[]" type="checkbox" aria-label="HDD memory" class="form-check-input"
                                value="240">
-                        240
+                        240 ГБ
                     </li>
                     <li>
                         <input name="hdd-mem[]" type="checkbox" aria-label="HDD memory" class="form-check-input"
-                               value="240">
-                        240
+                               value="512">
+                        512 ГБ
                     </li>
                     <li>
                         <input name="hdd-mem[]" type="checkbox" aria-label="HDD memory" class="form-check-input"
-                               value="240">
-                        240
+                               value="1024">
+                        1 ТБ
                     </li>
                 </ul>
             </li>
@@ -153,7 +153,7 @@
         <div class="product-container">
             <?php
             ob_start();
-            foreach ($data as $product) {
+            foreach ($data["products"] as $product) {
                 ?>
             <div class="product-capsule">
                 <div class="product">
