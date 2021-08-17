@@ -31,7 +31,7 @@ class Product extends Model
 
     public static function getProducts($params): \Illuminate\Contracts\Pagination\Paginator
     {
-        $result = Product::query();
+        $result = Product::query()->where("bought", "=", "false");
         //print_r($result);
         if (isset($params["query"]) && strlen($params["query"]) > 0) {
             $result = $result->where("name", "like", "%{$params["query"]}%");
