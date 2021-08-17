@@ -21,6 +21,9 @@ class Product extends Model
     private int $ssdSize;
     private bool $bought;
 
+    protected array $fillable = ["bought", "name", "price", "photo", "short_description", "brand", "processor", "ram",
+        "videocard", "hdd_size", "ssd_size"];
+
     public static function arraysToObjects($array): array
     {
         $products = [];
@@ -115,6 +118,11 @@ class Product extends Model
         $product->setSsdSize($item["ssd_size"]);
 
         return $product;
+    }
+
+    public static function buyProduct($id)
+    {
+        Product::find($id)->update(["bought" => true]);
     }
 
     public static function getMainProducts(): array

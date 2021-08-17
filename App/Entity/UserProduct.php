@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserProduct extends Model
 {
+    protected array $fillable = ["user_id", "bought", "product_id"];
 
     public static function getCartProducts(): array
     {
