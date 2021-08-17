@@ -13,6 +13,13 @@ class Product extends Model
     private float $price;
     private string $photo;
     private string $shortDescription;
+    private string $brand;
+    private string $processor;
+    private int $ram;
+    private string $videocard;
+    private int $hddSize;
+    private int $ssdSize;
+    private bool $bought;
 
     public static function arraysToObjects($array): array
     {
@@ -90,6 +97,26 @@ class Product extends Model
         return $result->simplePaginate(1, ["*"], "page", $params["page"] ?? 1);
     }
 
+    public static function getProductById($id): Product
+    {
+        $item = Product::find($id);
+        $product = new Product();
+        $product->setId($item["id"]);
+        $product->setName($item["name"]);
+        $product->setPhoto($item["photo"]);
+        $product->setPrice($item["price"]);
+        $product->setShortDescription($item["short_description"]);
+        $product->setBought($item["bought"]);
+        $product->setBrand($item["brand"]);
+        $product->setProcessor($item["processor"]);
+        $product->setRam($item["ram"]);
+        $product->setVideocard($item["ram"]);
+        $product->setHddSize($item["hdd_size"]);
+        $product->setSsdSize($item["ssd_size"]);
+
+        return $product;
+    }
+
     public static function getMainProducts(): array
     {
         $result = Product::inRandomOrder()->limit(4)->get();
@@ -149,5 +176,117 @@ class Product extends Model
     public function listing(): HasMany
     {
         return $this->hasMany(UserProduct::class);
+    }
+
+    /**
+     * @return string
+     */
+    public function getBrand(): string
+    {
+        return $this->brand;
+    }
+
+    /**
+     * @param string $brand
+     */
+    public function setBrand(string $brand): void
+    {
+        $this->brand = $brand;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProcessor(): string
+    {
+        return $this->processor;
+    }
+
+    /**
+     * @param string $processor
+     */
+    public function setProcessor(string $processor): void
+    {
+        $this->processor = $processor;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRam(): int
+    {
+        return $this->ram;
+    }
+
+    /**
+     * @param int $ram
+     */
+    public function setRam(int $ram): void
+    {
+        $this->ram = $ram;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVideocard(): string
+    {
+        return $this->videocard;
+    }
+
+    /**
+     * @param string $videocard
+     */
+    public function setVideocard(string $videocard): void
+    {
+        $this->videocard = $videocard;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHddSize(): int
+    {
+        return $this->hddSize;
+    }
+
+    /**
+     * @param int $hddSize
+     */
+    public function setHddSize(int $hddSize): void
+    {
+        $this->hddSize = $hddSize;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSsdSize(): int
+    {
+        return $this->ssdSize;
+    }
+
+    /**
+     * @param int $ssdSize
+     */
+    public function setSsdSize(int $ssdSize): void
+    {
+        $this->ssdSize = $ssdSize;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBought(): bool
+    {
+        return $this->bought;
+    }
+
+    /**
+     * @param bool $bought
+     */
+    public function setBought(bool $bought): void
+    {
+        $this->bought = $bought;
     }
 }

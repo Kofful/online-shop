@@ -1,5 +1,6 @@
+<script src="/public/js/product.js"></script>
 <div class="container">
-    <p class="product-caption">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
+    <p class="product-caption"><?= $data->getName()?></p>
     <div class="body-container">
         <div id="product-img-carousel" class="carousel slide">
             <div class="carousel-inner">
@@ -26,9 +27,11 @@
         </div>
         <div class="characteristics-container">
             <p class="product-caption">Цена</p>
-            <p class="product-price-big">20000<span class="hryvnia-sign">₴</span></p>
+            <p class="product-price-big"><?= $data->getPrice()?><span class="hryvnia-sign">₴</span></p>
             <div class="btn-container">
-                <button class="btn btn-success btn-add-to-cart">Добавить в корзину</button>
+                <button
+                        class="btn <?= $data->isBought() ? "btn-secondary" : "btn-success"?> btn-add-to-cart"
+                    <?= $data->isBought() ? "disabled" : ""?> onclick="buyProduct(<?= $data->getId()?>)">Добавить в корзину</button>
             </div>
             <p class="product-caption">Характеристики</p>
             <div class="div-table">
@@ -37,7 +40,7 @@
                         Название
                     </div>
                     <div class="characteristic-value">
-                        Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro
+                        <?= $data->getName()?>
                     </div>
                 </div>
                 <div class="table-row">
@@ -45,7 +48,7 @@
                         Бренд
                     </div>
                     <div class="characteristic-value">
-                        HP
+                        <?= $data->getBrand()?>
                     </div>
                 </div>
                 <div class="table-row">
@@ -53,7 +56,7 @@
                         Процессор
                     </div>
                     <div class="characteristic-value">
-                        AMD Ryzen 3
+                        <?= $data->getProcessor()?>
                     </div>
                 </div>
                 <div class="table-row">
@@ -61,7 +64,7 @@
                         Видеокарта
                     </div>
                     <div class="characteristic-value">
-                        GeForce GTX 1050 Ti
+                        <?= $data->getVideocard()?>
                     </div>
                 </div>
                 <div class="table-row">
@@ -69,7 +72,7 @@
                         Объем ОЗУ
                     </div>
                     <div class="characteristic-value">
-                        16 ГБ
+                        <?= $data->getRam()?> ГБ
                     </div>
                 </div>
                 <div class="table-row">
@@ -77,7 +80,7 @@
                         Объем SSD
                     </div>
                     <div class="characteristic-value">
-                        Нет
+                        <?= $data->getSsdSize() ? "{$data->getSsdSize()} ГБ" : "Нет" ?>
                     </div>
                 </div>
                 <div class="table-row">
@@ -85,7 +88,7 @@
                         Объем HDD
                     </div>
                     <div class="characteristic-value">
-                        240 ГБ
+                        <?= $data->getHddSize() ? "{$data->getHddSize()} ГБ" : "Нет" ?>
                     </div>
                 </div>
             </div>
