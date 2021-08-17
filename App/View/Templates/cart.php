@@ -1,3 +1,4 @@
+<script src="/public/js/cart.js"></script>
 <div class="cart-container">
     <?php
     ob_start();
@@ -21,6 +22,6 @@
         }
         ob_end_flush() ?>
 
-    <button class="btn btn-success btn-order">Заказать</button>
+    <button onclick="buyProducts()" class="btn btn-success btn-order">Заказать</button>
     <?php endif;?>
 </div>

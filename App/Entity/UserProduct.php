@@ -11,7 +11,9 @@ class UserProduct extends Model
 
     public static function getCartProducts(): array
     {
-        $result = UserProduct::where("user_id", "=", Authentication::getId())->get();
+        $result = UserProduct::where("user_id", "=", Authentication::getId())
+            ->where("bought", "=", "false")
+            ->get();
         $products = [];
         foreach ($result as $item) {
             $item = $item->product;
@@ -23,6 +25,11 @@ class UserProduct extends Model
             array_push($products, $product);
         }
         return $products;
+    }
+
+    public function buyAll($userId): int
+    {
+        return UserProduct::where("user_id", "=", $userId)->update(["bought"=>true]);
     }
 
     public function user(): BelongsTo
