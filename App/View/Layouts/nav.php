@@ -15,7 +15,12 @@ use Framework\Authentication\Authentication;
             </form>
             <div>
                 <?php if (Authentication::isAuth()) :?>
-                    <a href="/cart" class="nav-item"><img class="cart-icon" src="/public/img/cart.png" alt="Cart"></a>
+                    <a href="/cart" class="nav-item">
+                        <img class="cart-icon" src="/public/img/cart.png" alt="Cart">
+                    </a>
+                    <a href="/history" class="nav-item">
+                        <img class="cart-icon" src="/public/img/list.png" alt="History">
+                    </a>
                     <a href="/logout" class="btn btn-danger">Выход</a>
                 <?php else :?>
                     <a href="/login" class="btn btn-success">Вход</a>

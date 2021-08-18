@@ -29,9 +29,14 @@
             <p class="product-caption">Цена</p>
             <p class="product-price-big"><?= $data->getPrice()?><span class="hryvnia-sign">₴</span></p>
             <div class="btn-container">
+                <?php if ($data->isBought()) : ?>
                 <button
-                        class="btn <?= $data->isBought() ? "btn-secondary" : "btn-success"?> btn-add-to-cart"
-                    <?= $data->isBought() ? "disabled" : ""?> onclick="buyProduct(<?= $data->getId()?>)">Добавить в корзину</button>
+                        class="btn btn-secondary btn-add-to-cart"
+                        disabled onclick="buyProduct(<?= $data->getId()?>)">Нет в наличии</button>
+                <?php else: ?>
+                <button class="btn btn-success btn-add-to-cart"
+                        onclick="buyProduct(<?= $data->getId()?>)">Добавить в корзину</button>
+                <?php endif; ?>
             </div>
             <p class="product-caption">Характеристики</p>
             <div class="div-table">

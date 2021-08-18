@@ -19,10 +19,10 @@ class Product extends Model
     private string $videocard;
     private int $hddSize;
     private int $ssdSize;
-    private bool $bought;
+    private bool $isBought;
 
-    protected array $fillable = ["bought", "name", "price", "photo", "short_description", "brand", "processor", "ram",
-        "videocard", "hdd_size", "ssd_size"];
+    protected array $fillable = ["is_bought", "name", "price", "photo", "short_description",
+        "brand", "processor", "ram", "videocard", "hdd_size", "ssd_size"];
 
     public static function arraysToObjects($array): array
     {
@@ -41,7 +41,7 @@ class Product extends Model
 
     public static function getProducts($params): \Illuminate\Contracts\Pagination\Paginator
     {
-        $result = Product::query()->where("bought", "=", "false");
+        $result = Product::query()->where("is_bought", "=", "false");
         //print_r($result);
         if (isset($params["query"]) && strlen($params["query"]) > 0) {
             $result = $result->where("name", "like", "%{$params["query"]}%");
@@ -109,7 +109,7 @@ class Product extends Model
         $product->setPhoto($item["photo"]);
         $product->setPrice($item["price"]);
         $product->setShortDescription($item["short_description"]);
-        $product->setBought($item["bought"]);
+        $product->setIsBought($item["is_bought"]);
         $product->setBrand($item["brand"]);
         $product->setProcessor($item["processor"]);
         $product->setRam($item["ram"]);
@@ -122,7 +122,7 @@ class Product extends Model
 
     public static function buyProduct($id)
     {
-        Product::find($id)->update(["bought" => true]);
+        Product::find($id)->update(["is_bought" => true]);
     }
 
     public static function getMainProducts(): array
@@ -287,14 +287,14 @@ class Product extends Model
      */
     public function isBought(): bool
     {
-        return $this->bought;
+        return $this->isBought;
     }
 
     /**
-     * @param bool $bought
+     * @param bool $isBought
      */
-    public function setBought(bool $bought): void
+    public function setIsBought(bool $isBought): void
     {
-        $this->bought = $bought;
+        $this->isBought = $isBought;
     }
 }

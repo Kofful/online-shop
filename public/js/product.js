@@ -6,6 +6,5 @@ async function buyProduct(id)
             "Content-Type": "application/json"
         }
     });
-    console.log(await result.text());
-    //window.location.reload();
+    window.location.reload();
 }
