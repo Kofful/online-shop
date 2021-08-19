@@ -1,11 +1,10 @@
-<script src="/public/js/cart.js"></script>
 <div class="cart-container">
     <?php
     ob_start();
     if (sizeof($data) === 0) :
         ?>
         <div class="no-products">
-            Корзина пуста
+            Пока нет покупок
         </div>
         <?php
     else :
@@ -21,7 +20,5 @@
             <?php
         }
         ob_end_flush() ?>
-
-    <button onclick="buyProducts()" class="btn btn-success btn-order">Заказать</button>
     <?php endif;?>
 </div>

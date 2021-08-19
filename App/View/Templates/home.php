@@ -22,51 +22,23 @@
 <div class="products-container">
     <p class="products-label">Новинки товаров</p>
     <div class="product-container">
-        <div class="product-capsule">
-            <div class="product">
-                <a href="/product/1" class="product-link">
-                    <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
-                    <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
-                </a>
-                <p class="product-price">10000<span class="hryvnia-sign">₴</span></p>
-                <p class="short-description">Intel Core i5-9600 (3.1 - 4.6 ГГц) / RAM 32 ГБ / SSD 512 ГБ / Intel UHD
-                    Graphics 630 / LAN х2 / Windows 10 Pro / клавиатура + мышь</p>
+        <?php
+        ob_start();
+        foreach ($data as $product) {
+            ?>
+            <div class="product-capsule">
+                <div class="product">
+                    <a href="/product/<?= $product->getId()?>" class="product-link">
+                        <img class="product-img" alt="product image" src="../../public/img/<?= $product->getPhoto()?>">
+                        <p class="product-name"><?= $product->getName()?></p>
+                    </a>
+                    <p class="product-price"><?= $product->getPrice()?><span class="hryvnia-sign">₴</span></p>
+                    <p class="short-description"><?= $product->getShortDescription() ?></p>
+                </div>
             </div>
-        </div>
-        <div class="product-capsule">
-            <div class="product">
-                <a href="/product/1" class="product-link">
-                    <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
-                    <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
-                </a>
-                <p class="product-price">10000<span class="hryvnia-sign">₴</span></p>
-                <p class="short-description">Intel Core i5-9600 (3.1 - 4.6 ГГц) / RAM 32 ГБ / SSD 512 ГБ / Intel UHD
-                    Graphics 630 / LAN х2 / Windows 10 Pro / клавиатура + мышь</p>
-            </div>
-        </div>
-        <div class="product-capsule">
-            <div class="product">
-                <a href="/product/1" class="product-link">
-                    <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
-                    <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
-                </a>
-                <p class="product-price">10000<span class="hryvnia-sign">₴</span></p>
-                <p class="short-description">Intel Core i5-9600 (3.1 - 4.6 ГГц) / RAM 32 ГБ / SSD 512 ГБ / Intel UHD
-                    Graphics 630 / LAN х2 / Windows 10 Pro / клавиатура + мышь</p>
-            </div>
-        </div>
-        <div class="product-capsule">
-            <div class="product">
-                <a href="/product/1" class="product-link">
-                    <img class="product-img" alt="product image" src="../../../public/img/183047178.jpg">
-                    <p class="product-name">Компьютер HP ProDesk 600 G5 MT (160A8ES) Windows 10 Pro</p>
-                </a>
-                <p class="product-price">10000<span class="hryvnia-sign">₴</span></p>
-                <p class="short-description">Intel Core i5-9600 (3.1 - 4.6 ГГц) / RAM 32 ГБ / SSD 512 ГБ / Intel UHD
-                    Graphics 630 / LAN х2 / Windows 10 Pro / клавиатура + мышь</p>
-            </div>
-        </div>
-
+            <?php
+        }
+        ob_end_flush()?>
     </div>
     <a class="btn btn-success" href="/catalog">Смотреть еще</a>
 </div>

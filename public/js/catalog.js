@@ -1,21 +1,24 @@
 async function loadProducts()
 {
-    let response = await fetch("/products");
+    let response = await fetch(`/products${window.location.search}`);
     return response.json();
 }
 
 async function init()
 {
-    let products = await loadProducts();
+    let response = await loadProducts();
     let loader = document.querySelector("#loader");
 
     let container = document.createElement("div");
     container.classList.add("product-container");
-    products.forEach(product => {
+    response.data.forEach(product => {
         container.insertAdjacentElement("beforeend", makeProductLayout(product));
     });
 
+
+
     loader.replaceWith(container);
+    container.insertAdjacentElement("afterend", makeButtonsLayout(response, response));
 }
 
 function makeProductLayout(product)
@@ -61,11 +64,47 @@ function makeProductLayout(product)
 
     let shortDescription = document.createElement("p");
     shortDescription.classList.add("short-description");
-    shortDescription.innerText = product["shortDescription"];
+    shortDescription.innerText = product["short_description"];
 
     productDiv.insertAdjacentElement("beforeend", shortDescription);
 
     return capsule;
 }
 
-init().then();
+function makeButtonsLayout(data)
+{
+    let pageButtons = document.createElement("div");
+    pageButtons.classList.add("load-more-container");
+
+    if (data.currentPage > 1) {
+        let query = new URLSearchParams(window.location.search);
+        query.set("page", (data.currentPage - 1).toString());
+        let buttonPrev = document.createElement("a");
+        buttonPrev.classList.add.apply(
+            buttonPrev.classList,
+            ["btn", "btn-success", "btn-load-more"]
+        );
+        buttonPrev.href = `/catalog?${query}`;
+        buttonPrev.innerText = "Назад";
+
+        pageButtons.insertAdjacentElement("beforeend", buttonPrev);
+    }
+
+    if (data.hasMorePages) {
+        let query = new URLSearchParams(window.location.search);
+        query.set("page", (data.currentPage + 1).toString());
+        let buttonNext = document.createElement("a");
+        buttonNext.classList.add.apply(
+            buttonNext.classList,
+            ["btn", "btn-success", "btn-load-more"]
+        );
+        buttonNext.href = `/catalog?${query}`;
+        buttonNext.innerText = "Вперед";
+
+        pageButtons.insertAdjacentElement("beforeend", buttonNext);
+    }
+
+    return pageButtons;
+}
+
+init();

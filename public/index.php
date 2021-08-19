@@ -4,11 +4,12 @@ use Framework\Session\Session;
 use Framework\Helpers\TemplateEngine;
 
 require_once(__DIR__ . "/../vendor/autoload.php");
-include_once(__DIR__ . "/../Framework/Helpers/logger.php");
+//include_once(__DIR__ . "/../Framework/Helpers/logger.php");
 register_shutdown_function(array("CustomErrorHandler", "handle"));
 ob_start();
 set_error_handler(array("CustomErrorHandler", "handle"));
 include_once(__DIR__ . "/../Framework/Router/routes.php");
+include_once(__DIR__ . "/../Framework/Database/database.php");
 try {
     if (Session::cookieExists()) {
         Session::start();
@@ -26,3 +27,4 @@ try {
     error_log($e->getMessage());
     TemplateEngine::render(null, null, "home.php");
 }
+ob_end_flush();

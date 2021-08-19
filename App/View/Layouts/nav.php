@@ -14,8 +14,13 @@ use Framework\Authentication\Authentication;
                 <button class="btn btn-outline-success ms-2" type="submit">Поиск</button>
             </form>
             <div>
-                <a href="/cart" class="nav-item"><img class="cart-icon" src="/public/img/cart.png" alt="Cart"></a>
                 <?php if (Authentication::isAuth()) :?>
+                    <a href="/cart" class="nav-item">
+                        <img class="cart-icon" src="/public/img/cart.png" alt="Cart">
+                    </a>
+                    <a href="/history" class="nav-item">
+                        <img class="cart-icon" src="/public/img/list.png" alt="History">
+                    </a>
                     <a href="/logout" class="btn btn-danger">Выход</a>
                 <?php else :?>
                     <a href="/login" class="btn btn-success">Вход</a>

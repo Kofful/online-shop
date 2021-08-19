@@ -191,6 +191,8 @@ body {
     display:flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .sidebar-span {
@@ -199,6 +201,7 @@ body {
 
 .sidebar-label {
     margin-top: 10px;
+    margin-right: 10px;
 }
 
 .sidebar-btn {
@@ -388,4 +391,18 @@ body {
     font-size: 26px !important;
     width: 200px;
     margin: 0 auto 100px auto;
+}
+
+.no-products {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    font-size: 40px;
+    color: #888888;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-load-more {
+    margin: 10px;
 }
