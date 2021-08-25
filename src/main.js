@@ -9,6 +9,7 @@ import Catalog from "./components/catalog/Catalog";
 import Cart from "./components/cart/Cart";
 import History from "./components/history/History";
 import Login from "./components/login/Login";
+import Register from "./components/register/Register";
 
 const app = createApp({});
 
@@ -21,5 +22,6 @@ app.component("catalog", Catalog);
 app.component("cart", Cart);
 app.component("history", History);
 app.component("login", Login);
+app.component("register", Register);
 
 app.mount("#app");
