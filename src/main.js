@@ -8,6 +8,7 @@ import Home from "./components/home/Home";
 import Catalog from "./components/catalog/Catalog";
 import Cart from "./components/cart/Cart";
 import History from "./components/history/History";
+import Login from "./components/login/Login";
 
 const app = createApp({});
 
@@ -19,5 +20,6 @@ app.component("home", Home);
 app.component("catalog", Catalog);
 app.component("cart", Cart);
 app.component("history", History);
+app.component("login", Login);
 
 app.mount("#app");
