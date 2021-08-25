@@ -7,6 +7,7 @@ import FooterNav from "./components/FooterNav";
 import Home from "./components/home/Home";
 import Catalog from "./components/catalog/Catalog";
 import Cart from "./components/cart/Cart";
+import History from "./components/history/History";
 
 const app = createApp({});
 
@@ -17,5 +18,6 @@ app.component("footer-nav", FooterNav);
 app.component("home", Home);
 app.component("catalog", Catalog);
 app.component("cart", Cart);
+app.component("history", History);
 
 app.mount("#app");

@@ -17,3 +17,4 @@ Router::post("/product/([0-9]+)", "ProductController@buyProduct", ["name"=>"auth
 
 Router::get("/products", "ProductController@getProducts");
 Router::get("/cartproducts", "CartController@getProducts", ["name"=>"auth", "params"=>["statement"=>true]]);
+Router::get("/historyproducts", "HistoryController@getProducts", ["name"=>"auth", "params"=>["statement"=>true]]);

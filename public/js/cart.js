@@ -48,7 +48,7 @@ export async function init()
     return response;
 }
 
-function makeProductLayout(product)
+export function makeProductLayout(product)
 {
     let capsule = document.createElement("div");
     capsule.classList.add("cart-product");

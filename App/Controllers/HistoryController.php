@@ -9,7 +9,12 @@ class HistoryController
 {
     public static function index()
     {
+        TemplateEngine::render("history", null, "history.php");
+    }
+
+    public static function getProducts()
+    {
         $data = UserProduct::getBoughtProducts();
-        TemplateEngine::render("history", $data, "history.php");
+        TemplateEngine::json($data);
     }
 }
