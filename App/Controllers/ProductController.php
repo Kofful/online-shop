@@ -18,8 +18,7 @@ class ProductController
 
     public static function index()
     {
-        $data = Product::getProductById(self::getUrlId());
-        TemplateEngine::render("product", $data, "product.php");
+        TemplateEngine::render("product", null, "product.php");
     }
 
     public static function getProducts()
@@ -49,5 +48,11 @@ class ProductController
             print_r($t->getFile());
             print_r($t->getTraceAsString());
         }
+    }
+
+    public static function getProduct()
+    {
+        $data = Product::getProductById(self::getUrlId());
+        TemplateEngine::json($data);
     }
 }

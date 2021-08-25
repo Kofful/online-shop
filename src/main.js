@@ -10,6 +10,7 @@ import Cart from "./components/cart/Cart";
 import History from "./components/history/History";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
+import Product from "./components/product/Product";
 
 const app = createApp({});
 
@@ -23,5 +24,6 @@ app.component("cart", Cart);
 app.component("history", History);
 app.component("login", Login);
 app.component("register", Register);
+app.component("product", Product);
 
 app.mount("#app");

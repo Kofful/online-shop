@@ -19,3 +19,4 @@ Router::get("/products", "ProductController@getProducts");
 Router::get("/brandnewproducts", "HomeController@getProducts");
 Router::get("/cartproducts", "CartController@getProducts", ["name"=>"auth", "params"=>["statement"=>true]]);
 Router::get("/historyproducts", "HistoryController@getProducts", ["name"=>"auth", "params"=>["statement"=>true]]);
+Router::get("/productinfo/([0-9]+)", "ProductController@getProduct");

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Framework\Helpers\TemplateEngine;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Pagination\Paginator;
@@ -88,21 +89,7 @@ class Product extends Model
     public static function getProductById($id): Product
     {
         $item = Product::find($id);
-        $product = new Product();
-        $product->setId($item["id"]);
-        $product->setName($item["name"]);
-        $product->setPhoto($item["photo"]);
-        $product->setPrice($item["price"]);
-        $product->setShortDescription($item["short_description"]);
-        $product->setIsBought($item["is_bought"]);
-        $product->setBrand($item["brand"]);
-        $product->setProcessor($item["processor"]);
-        $product->setRam($item["ram"]);
-        $product->setVideocard($item["ram"]);
-        $product->setHddSize($item["hdd_size"]);
-        $product->setSsdSize($item["ssd_size"]);
-
-        return $product;
+        return $item;
     }
 
     public static function buyProduct($id)
