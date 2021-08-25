@@ -18,7 +18,6 @@ class TemplateEngine
             throw new LayoutNotFoundException("File does not exist: {$fileSource}");
         }
         include_once(__DIR__ . "/../../App/View/Layouts/header.php");
-        include_once(__DIR__ . "/../../App/View/Layouts/nav.php");
         require($fileSource);
         include_once(__DIR__ . "/../../App/View/Layouts/footer.php");
         ob_end_flush();

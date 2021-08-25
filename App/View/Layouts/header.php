@@ -16,4 +16,6 @@
 
 </head>
 <body>
-<div class="container">
+<div id="app">
+    <div class="container">
+    <header-nav></header-nav>
