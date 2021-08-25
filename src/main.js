@@ -6,6 +6,7 @@ import HeaderNav from "./components/HeaderNav";
 import FooterNav from "./components/FooterNav";
 import Home from "./components/home/Home";
 import Catalog from "./components/catalog/Catalog";
+import Cart from "./components/cart/Cart";
 
 const app = createApp({});
 
@@ -15,5 +16,6 @@ app.component("header-nav", HeaderNav);
 app.component("footer-nav", FooterNav);
 app.component("home", Home);
 app.component("catalog", Catalog);
+app.component("cart", Cart);
 
 app.mount("#app");

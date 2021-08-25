@@ -11,8 +11,7 @@ class CartController
 {
     public static function index()
     {
-        $data = UserProduct::getCartProducts();
-        TemplateEngine::render("cart", $data, "cart.php");
+        TemplateEngine::render("cart", null, "cart.php");
     }
 
     public static function buyAll()
@@ -20,5 +19,11 @@ class CartController
         $userId = Authentication::getId();
         $count = UserProduct::buyAll($userId);
         TemplateEngine::json(["count"=> $count]);
+    }
+
+    public static function getProducts()
+    {
+        $data = UserProduct::getCartProducts();
+        TemplateEngine::json($data);
     }
 }

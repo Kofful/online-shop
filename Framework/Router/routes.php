@@ -16,3 +16,4 @@ Router::post("/buycart", "CartController@buyAll", ["name"=>"auth","params"=>["st
 Router::post("/product/([0-9]+)", "ProductController@buyProduct", ["name"=>"auth","params"=>["statement"=>true]]);
 
 Router::get("/products", "ProductController@getProducts");
+Router::get("/cartproducts", "CartController@getProducts", ["name"=>"auth", "params"=>["statement"=>true]]);
