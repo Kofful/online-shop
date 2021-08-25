@@ -24,21 +24,6 @@ class Product extends Model
     protected array $fillable = ["is_bought", "name", "price", "photo", "short_description",
         "brand", "processor", "ram", "videocard", "hdd_size", "ssd_size"];
 
-    public static function arraysToObjects($array): array
-    {
-        $products = [];
-        foreach ($array as $item) {
-            $product = new Product();
-            $product->setId($item["id"]);
-            $product->setName($item["name"]);
-            $product->setPhoto($item["photo"]);
-            $product->setPrice($item["price"]);
-            $product->setShortDescription($item["short_description"]);
-            array_push($products, $product);
-        }
-        return $products;
-    }
-
     public static function getProducts($params): \Illuminate\Contracts\Pagination\Paginator
     {
         $result = Product::query()->where("is_bought", "=", "false");
@@ -125,10 +110,10 @@ class Product extends Model
         Product::find($id)->update(["is_bought" => true]);
     }
 
-    public static function getMainProducts(): array
+    public static function getMainProducts(): object
     {
         $result = Product::inRandomOrder()->limit(4)->get();
-        return self::arraysToObjects($result);
+        return $result;
     }
 
     public function getId(): int

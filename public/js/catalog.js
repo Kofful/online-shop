@@ -19,7 +19,7 @@ export async function init()
     container.insertAdjacentElement("afterend", makeButtonsLayout(response, response));
 }
 
-function makeProductLayout(product)
+export function makeProductLayout(product)
 {
     let capsule = document.createElement("div");
     capsule.classList.add("product-capsule");

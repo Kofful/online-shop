@@ -9,7 +9,12 @@ class HomeController
 {
     public static function index()
     {
+        TemplateEngine::render(null, null, "home.php");
+    }
+
+    public static function getProducts()
+    {
         $data = Product::getMainProducts();
-        TemplateEngine::render(null, $data, "home.php");
+        TemplateEngine::json($data);
     }
 }
