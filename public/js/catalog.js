@@ -4,7 +4,7 @@ async function loadProducts()
     return response.json();
 }
 
-async function init()
+export async function init()
 {
     let response = await loadProducts();
     let loader = document.querySelector("#loader");
@@ -14,8 +14,6 @@ async function init()
     response.data.forEach(product => {
         container.insertAdjacentElement("beforeend", makeProductLayout(product));
     });
-
-
 
     loader.replaceWith(container);
     container.insertAdjacentElement("afterend", makeButtonsLayout(response, response));
@@ -107,4 +105,3 @@ function makeButtonsLayout(data)
     return pageButtons;
 }
 
-init();
