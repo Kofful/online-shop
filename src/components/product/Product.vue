@@ -108,62 +108,36 @@ import {buyProduct, getProductInfo} from "/public/js/product";
 export default {
   name: "Product",
   data: () => ({
-    product: {}
+    id: null,
+    name: "",
+    isBought: true,
+    photo: "",
+    price: 0,
+    processor: "",
+    ram: 0,
+    videoCard: "",
+    ssdSize: 0,
+    hddSize: 0,
+    brand: ""
   }),
   mounted() {
-    let self = this;
     getProductInfo().then(product => {
-      self.product.id = product.id;
-      self.product.name = product.name;
-      self.product.isBought = product.is_bought;
-      self.product.photo = product.photo;
-      self.product.price = product.price;
-      self.product.processor = product.processor;
-      self.product.ram = product.ram;
-      self.product.videoCard = product.videocard;
-      self.product.ssdSize = product.ssd_size;
-      self.product.hddSize = product.hdd_size;
-      self.product.brand = product.brand;
+      this.id = product.id;
+      this.name = product.name;
+      this.isBought = product.is_bought;
+      this.photo = product.photo;
+      this.price = product.price;
+      this.processor = product.processor;
+      this.ram = product.ram;
+      this.videoCard = product.videocard;
+      this.ssdSize = product.ssd_size;
+      this.hddSize = product.hdd_size;
+      this.brand = product.brand;
     });
   },
   methods: {
     buy(id) {
       buyProduct(id);
-    }
-  },
-  computed: {
-    id() {
-      return this.product.id;
-    },
-    name() {
-      return this.product.name;
-    },
-    isBought() {
-      return this.product.isBought;
-    },
-    photo() {
-      return this.product.photo;
-    },
-    price() {
-      return this.product.price;
-    },
-    processor() {
-      return this.product.processor;
-    },
-    videoCard() {
-      return this.product.videoCard;
-    },
-    ram() {
-      return this.product.ram;
-    },
-    ssdSize() {
-      return this.product.ssdSize;
-    },
-    hddSize() {
-      return this.product.hddSize;
-    },
-    brand() {
-      return this.product.brand;
     }
   }
 }

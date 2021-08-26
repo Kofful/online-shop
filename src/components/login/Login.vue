@@ -36,8 +36,8 @@ export default {
   },
   computed: {
     isFormValid() {
-      return (this.isPhoneValid && !!this.phone.length &&
-          this.isPasswordValid && !!this.password.length);
+      return (this.isPhoneValid && !!this.phone &&
+          this.isPasswordValid && !!this.password);
     }
   }
 }

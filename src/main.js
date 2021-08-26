@@ -1,6 +1,5 @@
 import {createApp} from "vue";
 import VueCookies from 'vue3-cookies'
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import HeaderNav from "./components/HeaderNav";
 import FooterNav from "./components/FooterNav";
